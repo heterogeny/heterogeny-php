@@ -1,5 +1,5 @@
 {
-    "name": "schleumer/php-heterogeny",
+    "name": "heterogeny/heterogeny-php",
     "require": {
         "phpunit/phpunit": "^7.0"
     },
