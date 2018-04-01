@@ -1,3 +1,6 @@
+# Heterogeny [![Build Status](https://img.shields.io/travis/heterogeny/heterogeny-php.svg)](https://travis-ci.org/heterogeny/heterogeny-php) [![Latest Stable Version](https://img.shields.io/packagist/v/heterogeny/heterogeny-php.svg)](https://packagist.org/packages/heterogeny/heterogeny-php) [![Total Downloads](https://img.shields.io/packagist/dt/heterogeny/heterogeny-php.svg)](https://packagist.org/packages/heterogeny/heterogeny-php) [![Latest Unstable Version](https://img.shields.io/packagist/vpre/heterogeny/heterogeny-php.svg)](https://packagist.org/packages/heterogeny/heterogeny-php) [![License](https://img.shields.io/github/license/heterogeny/heterogeny-php.svg)](https://github.com/heterogeny/heterogeny-php/blob/master/LICENSE)
+
+
 #### Experimental
 
 Heterogenize PHP's data structures, like `array` that is split into `Seq`, `Dict` and `Tuple`.
