@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<ruleset name="Custom Standard">
+  <exclude-pattern>*/vendor/*</exclude-pattern>
+  <exclude-pattern>*/tests/*</exclude-pattern>
+  <rule ref="PSR2">
+      <exclude name="Generic.Formatting.MultipleStatementAlignment.NotSame"/>
+  </rule>
+  <rule ref="Squiz.Strings.DoubleQuoteUsage">
+      <exclude name="Squiz.Strings.DoubleQuoteUsage.ContainsVar"/>
+  </rule>
+</ruleset>

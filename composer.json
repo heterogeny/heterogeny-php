@@ -1,0 +1,24 @@
+{
+    "name": "schleumer/php-heterogeny",
+    "require": {
+        "phpunit/phpunit": "^7.0"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^4.0"
+    },
+    "authors": [
+        {
+            "name": "Wesley Schleumer",
+            "email": "wesley.schleumer@gmail.com"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "src/Heterogeny/functions.php"
+        ],
+        "psr-4": { "Heterogeny\\": "src/Heterogeny/" }
+    },
+    "scripts": {
+        "test": "phpunit"
+    }
+}
