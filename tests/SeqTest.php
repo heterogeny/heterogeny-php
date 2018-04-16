@@ -215,6 +215,20 @@ final class SeqTest extends TestCase
         $this->assertTrue($this->seq->all() === [1, 2, 3, 4]);
     }
 
+    public function testMapWithIndex(): void
+    {
+        $result = $this->seq->mapWithIndex(function ($key, $value) {
+            return [$key, $value];
+        });
+
+        $this->assertEquals([
+            [0, 1],
+            [1, 2],
+            [2, 3],
+            [3, 4],
+        ], $result->all());
+    }
+
     protected function setUp(): void
     {
         $this->seq = seq(1, 2, 3, 4);

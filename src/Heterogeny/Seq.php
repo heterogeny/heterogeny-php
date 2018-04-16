@@ -14,6 +14,7 @@
  * @license https://opensource.org/licenses/GPL-3.0 GNU Public License v3
  * @link    https://github.com/schleumer/php-heterogeny
  */
+
 namespace Heterogeny;
 
 /**
@@ -51,7 +52,7 @@ class Seq extends Clonable implements Heterogenic
      * `ArrayAccess` stuff
      *
      * @param mixed $offset offset to set
-     * @param mixed $value  value
+     * @param mixed $value value
      *
      * @return void
      */
@@ -170,7 +171,7 @@ class Seq extends Clonable implements Heterogenic
                 sprintf('`$index` must be an `int`, %s(%s) received', gettype($offset), var_export($offset, true))
             );
         }
-        
+
         return intval($offset);
     }
 
@@ -197,7 +198,7 @@ class Seq extends Clonable implements Heterogenic
     /**
      * Gets the value at `$index`, if not a valid index, returns `$default`.
      *
-     * @param int   $index   index to lookup
+     * @param int $index index to lookup
      * @param mixed $default value to return if lookup finds no result
      *
      * @return mixed|null
@@ -436,10 +437,24 @@ class Seq extends Clonable implements Heterogenic
     }
 
     /**
+     * Map over each `Seq` item with index
+     *
+     * @param callable $function map function
+     *
+     * @return static
+     */
+    public function mapWithIndex(callable $function)
+    {
+        $values = array_values($this->data);
+
+        return new Seq(array_map($function, array_keys($values), $values));
+    }
+
+    /**
      * Folds `Seq` items to the left
      *
      * @param callable $function function which will fold values
-     * @param mixed    $initial  the initial fold value
+     * @param mixed $initial the initial fold value
      *
      * @return mixed|null
      */
@@ -456,7 +471,7 @@ class Seq extends Clonable implements Heterogenic
      * Folds `Seq` items to the right
      *
      * @param callable $function function which will fold values
-     * @param mixed    $initial  the initial fold value
+     * @param mixed $initial the initial fold value
      *
      * @return mixed|null
      */
@@ -626,16 +641,6 @@ class Seq extends Clonable implements Heterogenic
     public function mkString($separator): string
     {
         return join($separator, $this->data);
-    }
-
-    /**
-     * `var_dump` representation
-     *
-     * @return mixed
-     */
-    public function __debugInfo()
-    {
-        return $this->data;
     }
 
     /**

@@ -466,16 +466,6 @@ class Dict extends Clonable implements Heterogenic
     }
 
     /**
-     * `var_dump` representation
-     *
-     * @return mixed
-     */
-    public function __debugInfo()
-    {
-        return $this->data;
-    }
-
-    /**
      * Specify data which should be serialized to JSON
      * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
      * @return mixed data which can be serialized by <b>json_encode</b>,
