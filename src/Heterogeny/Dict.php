@@ -296,6 +296,26 @@ class Dict extends Clonable implements Heterogenic
     }
 
     /**
+     * Filter an Dict using a predicate which receives key and value return a new `Dict` with elements
+     * that doesn't match the predicate
+     *
+     * @param callable $function
+     * @return Dict
+     */
+    public function filter(callable $function): Dict
+    {
+        $result = new Dict();
+
+        foreach ($this->data as $key => $value) {
+            if (!!$function($key, $value)) {
+                $result->offsetSet($key, $value);
+            }
+        }
+
+        return $result;
+    }
+
+    /**
      * Folds `Seq` items to the left
      *
      * @param callable $function function which will fold values

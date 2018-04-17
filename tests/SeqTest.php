@@ -229,6 +229,24 @@ final class SeqTest extends TestCase
         ], $result->all());
     }
 
+    public function testFilter(): void
+    {
+        $result = $this->seq->filter(function ($item) {
+            return $item % 2 === 0;
+        });
+
+        $this->assertEquals([2, 4], $result->all());
+    }
+
+    public function testFilterWithIndex(): void
+    {
+        $result = $this->seq->filterWithIndex(function ($key, $item) {
+            return $key % 2 === 0;
+        });
+
+        $this->assertEquals([1, 3], $result->all());
+    }
+
     protected function setUp(): void
     {
         $this->seq = seq(1, 2, 3, 4);

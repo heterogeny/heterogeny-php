@@ -450,6 +450,39 @@ class Seq extends Clonable implements Heterogenic
         return new Seq(array_map($function, array_keys($values), $values));
     }
 
+
+    /**
+     * Filter an Seq using a predicate which receives value return a new `Seq` with elements
+     * that doesn't match the predicate
+     *
+     * @param callable $function
+     * @return Seq
+     */
+    public function filter(callable $function): Seq
+    {
+        return new Seq(array_filter($this->data, $function));
+    }
+
+    /**
+     * Filter an Seq using a predicate which receives key and value return a new `Seq` with elements
+     * that doesn't match the predicate
+     *
+     * @param callable $function
+     * @return Seq
+     */
+    public function filterWithIndex(callable $function): Seq
+    {
+        $result = new Seq();
+
+        foreach ($this->data as $key => $value) {
+            if (!!$function($key, $value)) {
+                $result = $result->append($value);
+            }
+        }
+
+        return $result;
+    }
+
     /**
      * Folds `Seq` items to the left
      *

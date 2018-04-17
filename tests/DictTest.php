@@ -2,7 +2,6 @@
 
 namespace Test;
 
-use Heterogeny\Seq;
 use PHPUnit\Framework\TestCase;
 
 final class DictTest extends TestCase
@@ -43,7 +42,16 @@ final class DictTest extends TestCase
             'c' => 'd'
         ])));
     }
-    
+
+    public function testFilter(): void
+    {
+        $result = $this->dict->filter(function ($key, $item) {
+            return in_array($key, ['a', 'd']);
+        });
+
+        $this->assertEquals(['a', 'd'], $result->keys());
+    }
+
     protected function setUp(): void
     {
         $this->dict = dict([
