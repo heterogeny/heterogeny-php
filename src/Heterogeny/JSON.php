@@ -49,7 +49,7 @@ class JSON
      *
      * @return string
      */
-    public static function encode(Heterogenic $data, $flags = null): string
+    public static function encode(?Heterogenic $data, $flags = null): string
     {
         return json_encode($data, $flags);
     }

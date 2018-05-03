@@ -49,4 +49,11 @@ final class JsonTest extends TestCase
 JSON;
 
     }
+
+    public function testNull(): void
+    {
+        $v = JSON::decode(JSON::encode(null));
+
+        self::assertEquals(null, $v);
+    }
 }
