@@ -272,6 +272,39 @@ class Seq extends Clonable implements Heterogenic
     }
 
     /**
+     * Slice the seq from index $index with length $length,
+     * as of PHP has no method overloading, $length default value is null.
+     */
+    public function slice(int $index = 0, ?int $length = null): Seq
+    {
+        return new Seq(array_slice($this->data, $index, $length));
+    }
+
+    /**
+     * Takes first n elements of the seq
+     */
+    public function take(int $n = 0): Seq
+    {
+        return $this->slice(0, abs($n));
+    }
+
+    /**
+     * Takes first n elements of the seq
+     */
+    public function takeLeft(int $n = 0): Seq
+    {
+        return $this->take($n);
+    }
+
+    /**
+     * Takes last n elements of the seq
+     */
+    public function takeRight(int $n = 0): Seq
+    {
+        return $this->slice(-abs($n));
+    }
+
+    /**
      * Returns all items except last
      *
      * @return Seq

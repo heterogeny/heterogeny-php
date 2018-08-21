@@ -247,6 +247,37 @@ final class SeqTest extends TestCase
         $this->assertEquals([1, 3], $result->all());
     }
 
+    public function testTake(): void
+    {
+        $take1 = $this->seq->take(1);
+        $take2 = $this->seq->take(2);
+        
+        $this->assertEquals([1], $take1->all());
+        $this->assertEquals([1, 2], $take2->all());
+    }
+
+    public function testTakeRight(): void
+    {
+        $take1 = $this->seq->takeRight(1);
+        $take2 = $this->seq->takeRight(2);
+
+        $this->assertEquals([4], $take1->all());
+        $this->assertEquals([3, 4], $take2->all());
+    }
+
+    public function testSlice(): void
+    {
+        $slice1 = $this->seq->slice(1);
+        $slice2 = $this->seq->slice(3);
+        $slice3 = $this->seq->slice(-2);
+        $slice4 = $this->seq->slice(1, 2);
+
+        $this->assertEquals([2, 3, 4], $slice1->all());
+        $this->assertEquals([4], $slice2->all());
+        $this->assertEquals([3, 4], $slice3->all());
+        $this->assertEquals([2, 3], $slice4->all());
+    }
+
     protected function setUp(): void
     {
         $this->seq = seq(1, 2, 3, 4);
