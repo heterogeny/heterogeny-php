@@ -496,4 +496,18 @@ class Dict extends Clonable implements Heterogenic
     {
         return (object)$this->data;
     }
+
+    /**
+     * Check if the given $index exists on Dict
+     *
+     * @param mixed $index index to lookup
+     *
+     * @return boolean
+     */
+    public function contains($index)
+    {
+        $focus = Aim::focus($index);
+
+        return $focus->exists($this);
+    }
 }
