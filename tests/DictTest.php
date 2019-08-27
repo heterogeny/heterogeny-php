@@ -52,6 +52,17 @@ final class DictTest extends TestCase
         $this->assertEquals(['a', 'd'], $result->keys());
     }
 
+    public function testContains(): void
+    {
+        $result1 = $this->dict->contains('a');
+        $result2 = $this->dict->contains('d/e');
+        $result3 = $this->dict->contains('d/z');
+
+        $this->assertTrue($result1);
+        $this->assertTrue($result2);
+        $this->assertFalse($result3);
+    }
+
     protected function setUp(): void
     {
         $this->dict = dict([
