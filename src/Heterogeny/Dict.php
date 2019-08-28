@@ -510,4 +510,20 @@ class Dict extends Clonable implements Heterogenic
 
         return $focus->exists($this);
     }
+
+    /**
+     * @param $array
+     * @return Dict
+     */
+    public static function __set_state($array)
+    {
+        // Well, this is PHP, who knows what the actual flying shuckle will happen.
+        if (is_array($array)) {
+            if (key_exists('data', $array)) {
+                return new Dict($array['data']);
+            }
+        }
+
+        return new Dict();
+    }
 }

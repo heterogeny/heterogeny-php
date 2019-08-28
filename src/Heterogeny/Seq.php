@@ -718,4 +718,20 @@ class Seq extends Clonable implements Heterogenic
     {
         return array_values($this->data);
     }
+
+    /**
+     * @param $array
+     * @return Seq
+     */
+    public static function __set_state($array)
+    {
+        // Well, this is PHP, who knows what the actual flying shuckle will happen.
+        if (is_array($array)) {
+            if (key_exists('data', $array)) {
+                return new Seq($array['data']);
+            }
+        }
+
+        return new Seq();
+    }
 }
